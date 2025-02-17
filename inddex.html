@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animasi Love Terbang</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffdde1;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        .love-container {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+        }
+        .love {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 2;
+        }
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            background: url('pngwing.com.png') no-repeat center/cover;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            margin-top: 300px;
+            margin-left: 655px;
+        }
+        .app-icon:hover {
+            transform: scale(1.1);
+        }
+        .app-text {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+        .card {
+            display: none;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .message {
+            font-size: 20px;
+            color: #ff4d6d;
+            margin-top: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .window {
+            position:absolute;
+            top: 450px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 20rem;
+            height: 10rem;
+            min-width: 12rem;
+            min-height: 12rem;
+            max-width: 60rem;
+            max-height: 60rem;
+            border: 3px solid #ab578b;
+            border-radius: 10px;
+            background-color: #ffc0cb;
+            overflow: hidden;
+            resize: both;
+            z-index: 99;
+          }
+          
+          .window:has(.window__head-button--hide:focus) {
+            transform: rotate3d(-2, 1, 0, 70deg);
+            translate: -50rem 85rem;
+            perspective: 600rem;
+            transition:
+              translate 600ms ease 100ms,
+              transform 200ms ease-in;
+          }
+          
+          .window:has(.window__head-button--exit:focus) {
+            opacity: 0;
+            transform: scale(0);
+            transition: 170ms all linear 180ms;
+          }
+          
+          .window__head {
+            display: flex;
+            width: 100%;
+            height: 2rem;
+            background-color: #ff51b1;
+            cursor: move;
+          }
+          
+          .window__head-meta {
+            width: 100%;
+            padding: 4px 8px;
+            overflow: hidden;
+          }
+          
+          .window__head-title {
+            color: #fff;
+            font-size: 16px;
+            user-select: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: auto;
+          }
+          
+          .window__head-controllers {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            width: 4rem;
+            padding: 0 0.5rem;
+            height: 2rem;
+            gap: 4px;
+          }
+          
+          .window__head-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.2rem;
+            height: 1.2rem;
+            color: #fff;
+            font-size: 0.8rem;
+            background-color: #ff9fdab3;
+            border: 3px solid #ffffff5e;
+            cursor: pointer;
+            user-select: none;
+            transition: 500ms all;
+            -webkit-text-stroke: 1.5px;
+          }
+          
+          .window__head-button--hide:hover {
+            background-color: #00ff0080;
+          }
+          
+          .window__head-button--exit:hover {
+            background-color: #ff009db5;
+          }
+          
+          .window__body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: calc(100% - 32px);
+          }
+          
+          .window__frame {
+            width: 98%;
+            height: 97%;
+            background-color: #e383b3;
+            font-family: cursive;
+            color: #FBFFE4;
+          }
+          
+          
+          
+          .fotokocak{
+            height: 220px;
+            width: 220px;
+            
+            margin: auto;
+            
+          }
+          
+          
+          
+          
+          
+          
+          img {
+            display: block;
+            max-width: 100%;
+          }
+          
+          .stack {
+            top: 50px;
+            margin: auto;
+            width: 95%;
+            max-width: 400px;
+            transition: 0.25s ease;
+            &:hover {
+              transform: rotate(5deg);
+              .card:before {
+                transform: translatey(-2%) rotate(-4deg);
+              }
+              .card:after {
+                transform: translatey(2%) rotate(4deg);
+              }
+            }
+          }
+          
+          .kartu {
+            font-size: 15px;
+            color: #000;
+            aspect-ratio: 3 / 2;
+            border:black 4px solid;
+            background-color: #ffffff;
+            position: relative;
+            transition: 0.15s ease;
+            cursor: pointer;
+            padding: 5% 5% 15% 5%;
+            &:before,
+            &:after {
+              content: "";
+              display: block;
+              position: absolute;
+              height: 100%;
+              width: 100%;
+              border:black 4px solid;
+              background-color: #ffffff;
+              transform-origin: center center;
+              z-index: -1;
+              transition: 0.15s ease;
+              top: 0;
+              left: 0;
+            }
+            
+            &:before {
+              transform: translatey(-2%) rotate(-6deg);
+            }
+            
+            &:after {
+              transform: translatey(2%) rotate(6deg);
+            }
+          }
+          .image {
+            width: 100%;
+            border:black 4px solid;
+            background-color: #ffffff;
+            aspect-ratio: 1 / 1;
+            position: relative;
+          }
+          
+          .browser-warning {
+            margin-bottom: 4rem;
+          }
+          
+          @supports (aspect-ratio: 1 / 1) {
+            .browser-warning {
+              display: none;
+            }
+          }
+          
+          
+          
+          .p2 {
+            position:absolute;
+            width: 125px;
+            height: 125px;
+            top: 195px;
+            left: 115px;
+            rotate: 20deg;
+          }
+          
+          .p1 {
+            position:absolute;
+            width: 125px;
+            height: 125px;
+            top: 195px;
+            right: 115px;
+            rotate: -20deg;
+          }
+          
+          .stiker1 {
+            position:absolute;
+            width: 125px;
+            height: 125px;
+            rotate:-15deg;
+            bottom: 275px;
+            right: 115px;
+          }
+
+          .hati{
+            position:absolute;
+            width: 125px;
+            height: 125px;
+            rotate: 0deg;
+            bottom: 275px;
+            left: 115px;
+          }
+
+
+          .p3{
+            position:absolute;
+            width: 125px;
+            height: 125px;
+            rotate: -0deg;
+            bottom: 80px;
+            rotate: 20deg;
+            right: 0;
+            left: 0;
+            margin: auto;
+          }
+          
+          
+          
+          
+          
+        </style>
+      </head>
+      <body>
+        <div class="love-container">
+          
+        <div class="hearts" id="hearts"></div>
+    <div class="container">
+        <div class="app-icon" onclick="showCard()"></div>
+        <div class="app-text">
+          For My Love.txt
+          <p></p>
+
+        </div>
+
+        <div class="card" id="valentineCard">
+
+            <div class="message"><div class="window">
+                <div class="window__head">
+                  <div class="window__head-meta">
+                    <p class="window__head-title">ଘ ੈ♡‧₊˚ My Lovely BOCILLLL💕</p>
+                  </div>
+                  <div class="window__head-controllers">
+                    <button class="window__head-button window__head-button--hide">-</button>
+                    <button class="window__head-button window__head-button--exit">x</button>
+                  </div>
+                </div>
+                <div class="window__body">
+                  <div class="window__frame">
+                    <p>Halooow cilll met valentineeeeee, maff yah abang belom bisa ngasih coklat, bunga atau hadiah lainnya yah huft😞</p>
+                    <p>Moga nanti kita masih bisa ketemu yah, terus valentine date😋</p>
+
+                    
+                    <div class="fotokocak">
+                      
+                      <p class="browser-warning">
+                        If this looks wonky to you it's because this browser doesn't support the CSS
+                        property 'aspect-ratio' AWKOAWKOAKWOAWKAK.
+                      </p>
+                      <div class="stack">
+                        <div class="kartu">
+                          <div class="image">
+                            <a href="untuk bocilkuuuuu.docx">
+                            <img src="potopav.jpg" alt="poto paporitkuuu">
+                          </a>
+                          </div>
+                          <p>poto paporit abng selain lucukkk kmu Habis digigit nyamuk anjay AWKAOWKAOWKAW
+                            
+                          </p>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    
+                    
+                    <img class="stiker1" src="yuhuuu.jpg" alt="Stiker ngasih bunga">
+                    <img src="meng.jpg" alt="hati" class="hati">
+                    <img src="bunga2.jpeg" alt="" class="p1">
+                    <img src="bunga3.jpg" alt="" class="p2">
+                    <img src="guk1.jpeg" alt="" class="p3">
+                    <img src="mwgk" alt="" class="p4">
+                    <img src="meng4" alt="" class="p5">
+                    <img src="" alt="" class="p6">
+
+                    
+                  </div>
+                </div>
+              
+
+        </div>
+    </div>
+
+    </div>
+    <script>
+
+        function showCard() {
+            document.querySelector('.app-icon').style.display = 'none';
+            document.querySelector('.app-text').style.display = 'none';
+            document.getElementById('valentineCard').style.display = 'block';
+            generateHearts();}
+
+        function createLove() {
+            const love = document.createElement("div");
+            love.classList.add("love");
+            love.innerHTML = "❤️";
+            document.querySelector(".love-container").appendChild(love);
+            
+            let leftPosition = Math.random() * window.innerWidth;
+            let duration = Math.random() * 3 + 2;
+            let size = Math.random() * 20 + 10;
+            
+            love.style.left = `${leftPosition}px`;
+            love.style.animationDuration = `${duration}s`;
+            love.style.fontSize = `${size}px`;
+            
+            setTimeout(() => {
+                love.remove();
+            }, duration * 1000);
+        }
+        
+        setInterval(createLove, 300);
+    </script>
+</body>
+</html>
